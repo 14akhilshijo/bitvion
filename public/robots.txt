@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /private
+Disallow: /dashboard
+Disallow: /login
+
+Sitemap: https://bitvion.in/sitemap.xml

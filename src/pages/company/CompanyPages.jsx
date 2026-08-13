@@ -1,0 +1,197 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import PageMeta from '../../components/seo/PageMeta'
+import StructuredData, { buildBreadcrumbSchema, personSchema } from '../../components/seo/StructuredData'
+import PageShell from '../../components/layout/PageShell'
+import PageHero from '../../components/layout/PageHero'
+import FounderProfile from '../../components/FounderProfile'
+import JobOpenings from '../../components/JobOpenings'
+import AnimateIn from '../../components/AnimateIn'
+import Breadcrumbs from '../../components/layout/Breadcrumbs'
+import EntityNav from '../../components/seo/EntityNav'
+import styles from '../../style'
+import { arrowUp } from '../../assets'
+
+const companyLinks = [
+  { title: 'About', path: '/company/about', description: 'Who we are and what we build.' },
+  { title: 'Founder', path: '/company/founder', description: 'Leadership and technology vision.' },
+  { title: 'Technology', path: '/company/technology', description: 'Our engineering capabilities and stack.' },
+  { title: 'Careers', path: '/company/careers', description: 'Join the Bitvion engineering team.' },
+]
+
+export const CompanyOverview = () => (
+  <PageShell>
+    <PageMeta title='Company | Bitvion Technologies' description='Learn about Bitvion Technologies, a Kerala-based technology business, its founder Akhil Shijo, and products including YatrikERP.' path='/company' />
+    <StructuredData data={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }])} />
+    <PageHero
+      eyebrow='Company'
+      title={<>WE BUILD TECHNOLOGY <br className='sm:block hidden' /><span className='text-gradient'>WITH PURPOSE.</span></>}
+      subtitle='Bitvion Technologies engineers intelligent software, AI systems and digital products for organizations that need practical technology solutions.'
+      breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }]}
+    />
+    <div className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
+      {companyLinks.map((item) => (
+        <Link key={item.path} to={item.path} className='group p-6 rounded-[20px] feature-card border border-white/5 hover:border-secondary/20 transition-all'>
+          <h3 className='font-poppins font-semibold text-white text-[20px] mb-2 group-hover:text-gradient'>{item.title}</h3>
+          <p className='font-poppins text-dimWhite text-[15px]'>{item.description}</p>
+        </Link>
+      ))}
+    </div>
+  </PageShell>
+)
+
+export const AboutPage = () => (
+  <PageShell>
+    <PageMeta
+      title='About Bitvion Technologies | Software & AI Technology'
+      description='Learn about Bitvion Technologies, a Kerala-based technology business focused on software engineering, artificial intelligence, automation, cloud technology and digital products.'
+      path='/company/about'
+    />
+    <StructuredData data={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'About', path: '/company/about' }])} />
+    <PageHero
+      eyebrow='About'
+      title='ABOUT BITVION TECHNOLOGIES'
+      subtitle='A Kerala, India-based technology business focused on software engineering, artificial intelligence, automation, cloud technology and digital products.'
+      breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'About', path: '/company/about' }]}
+    />
+    <div className='space-y-8 max-w-[800px]'>
+      <p className={styles.paragraph}>
+        Bitvion Technologies is a technology business based in Kerala, India.
+        It is a proprietary enterprise providing services in computer programming,
+        consultancy and related activities. Akhil Shijo is the Founder &amp; Proprietor
+        of Bitvion Technologies.
+      </p>
+      <p className={styles.paragraph}>
+        Bitvion Technologies builds intelligent software, AI solutions, automation
+        systems and digital products for organizations in India and international markets.
+        Capabilities include software engineering, artificial intelligence, machine learning,
+        intelligent automation, cloud technology, digital transformation, data and analytics,
+        UI/UX engineering and digital products.
+      </p>
+      <p className={styles.paragraph}>
+        YatrikERP is a technology product developed by Bitvion Technologies for
+        transportation operations.
+      </p>
+
+      <section>
+        <h2 className='font-poppins font-semibold text-white text-[20px] mb-4'>Company timeline</h2>
+        <ol className='space-y-4'>
+          <li className='p-5 rounded-xl bg-black-gradient border border-white/10'>
+            <p className='font-poppins text-secondary text-[13px] mb-1'>24 January 2026</p>
+            <p className='font-poppins text-dimWhite text-[15px]'>
+              Bitvion Technologies commenced as a proprietary enterprise in Kerala, India,
+              with a primary activity of computer programming, consultancy and related services.
+            </p>
+          </li>
+          <li className='p-5 rounded-xl bg-black-gradient border border-white/10'>
+            <p className='font-poppins text-secondary text-[13px] mb-1'>Ongoing</p>
+            <p className='font-poppins text-dimWhite text-[15px]'>
+              Engineering software, AI, automation and digital products, including YatrikERP,
+              and building technology capabilities for organizations in India and international markets.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <div className='p-6 rounded-xl bg-black-gradient border border-white/10'>
+        <h2 className='font-poppins font-semibold text-white text-[20px] mb-4'>Business identity</h2>
+        <dl className='grid grid-cols-1 sm:grid-cols-2 gap-4 font-poppins text-[15px]'>
+          {[
+            ['Name', 'Bitvion Technologies'],
+            ['Organisation type', 'Proprietary enterprise'],
+            ['Major activity', 'Services'],
+            ['Primary activity', 'Computer programming, consultancy and related activities'],
+            ['Commencement', '24 January 2026'],
+            ['Locations', 'Kerala, India · Bangalore, India'],
+            ['Founder & Proprietor', 'Akhil Shijo'],
+            ['Official product', 'YatrikERP'],
+          ].map(([label, value]) => (
+            <div key={label}>
+              <dt className='text-secondary text-[13px] mb-1'>{label}</dt>
+              <dd className='text-dimWhite'>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <EntityNav
+        label='Related to Bitvion Technologies'
+        links={[
+          { name: 'Akhil Shijo, Founder', path: '/company/founder' },
+          { name: 'YatrikERP', path: '/products/yatrikerp' },
+          { name: 'Solutions', path: '/solutions' },
+          { name: 'Technology', path: '/company/technology' },
+        ]}
+      />
+    </div>
+  </PageShell>
+)
+
+export const FounderPage = () => (
+  <PageShell>
+    <PageMeta
+      title='Akhil Shijo | Founder & Proprietor of Bitvion Technologies'
+      description='Akhil Shijo is the Founder and Proprietor of Bitvion Technologies, a technology business focused on software engineering, AI, automation and digital products.'
+      path='/company/founder'
+      image='https://bitvion.in/founder.jpeg'
+    />
+    <StructuredData
+      data={[
+        personSchema,
+        buildBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Company', path: '/company' },
+          { name: 'Founder', path: '/company/founder' },
+        ]),
+      ]}
+    />
+    <div className='pt-28 sm:pt-32'>
+      <Breadcrumbs items={[{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'Founder', path: '/company/founder' }]} />
+    </div>
+    <FounderProfile variant='page' />
+  </PageShell>
+)
+
+const techCategories = [
+  { title: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
+  { title: 'Backend', items: ['Python', 'Node.js', 'Django', 'Flask', 'FastAPI'] },
+  { title: 'AI/ML', items: ['TensorFlow', 'PyTorch', 'LangChain', 'OpenAI APIs'] },
+  { title: 'Databases', items: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'] },
+  { title: 'Cloud', items: ['AWS', 'Docker', 'Kubernetes', 'Serverless'] },
+  { title: 'DevOps', items: ['CI/CD', 'GitHub Actions', 'Terraform', 'Monitoring'] },
+  { title: 'Mobile', items: ['React Native', 'Progressive Web Apps'] },
+  { title: 'Automation', items: ['Workflow Engines', 'RPA', 'API Integrations'] },
+]
+
+export const TechnologyPage = () => (
+  <PageShell>
+    <PageMeta title='Technology | Bitvion Technologies' description='Modern technology capabilities including frontend, backend, AI/ML, cloud and DevOps from Bitvion Technologies.' path='/company/technology' />
+    <StructuredData data={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'Technology', path: '/company/technology' }])} />
+    <PageHero eyebrow='Technology' title={<>ENGINEERED WITH <span className='text-gradient'>MODERN TECHNOLOGY.</span></>} subtitle='Technology capabilities our engineering team works with across projects. Not every technology is used on every engagement.' breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'Technology', path: '/company/technology' }]} />
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+      {techCategories.map((cat) => (
+        <div key={cat.title} className='p-6 rounded-xl bg-black-gradient border border-white/5 hover:border-secondary/20 transition-colors'>
+          <h3 className='font-poppins font-semibold text-secondary text-[16px] mb-4'>{cat.title}</h3>
+          <ul className='space-y-2' role='list'>
+            {cat.items.map((item) => (
+              <li key={item} className='font-poppins text-dimWhite text-[14px]'>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </PageShell>
+)
+
+export const CompanyCareersPage = () => (
+  <PageShell>
+    <PageMeta title='Careers | Bitvion Technologies' description='Build the future with Bitvion Technologies. Engineering careers and internship opportunities.' path='/company/careers' />
+    <PageHero eyebrow='Careers' title={<>BUILD THE FUTURE <br className='sm:block hidden' /><span className='text-gradient'>WITH BITVION.</span></>} subtitle='Join a technology company focused on engineering, AI and product development.' breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'Careers', path: '/company/careers' }]} />
+    <JobOpenings showAll className='!py-0' />
+    <AnimateIn className='mt-12'>
+      <Link to='/careers' className='inline-flex items-center gap-2 font-poppins text-secondary hover:text-white transition-colors group'>
+        Submit Application <img src={arrowUp} alt='' className='w-[16px] h-[16px] rotate-45 group-hover:translate-x-1 transition-transform' />
+      </Link>
+    </AnimateIn>
+  </PageShell>
+)
