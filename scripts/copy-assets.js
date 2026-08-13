@@ -44,7 +44,7 @@ const copies = [
   },
 ]
 
-for (const { from, to } of copies) {
+for (const { from, to, optional = false } of copies) {
   const sources = Array.isArray(from) ? from : [from]
   const source = sources.find((path) => existsSync(path))
   if (source) {
