@@ -83,7 +83,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.div
-        className={`flex-1 flex ${styles.flexCenter} md:my-0 mt-8 mb-2 relative w-full max-w-[420px] md:max-w-none mx-auto`}
+        className={`flex-1 flex ${styles.flexCenter} md:my-0 mt-8 mb-2 relative w-full max-w-[340px] md:max-w-[500px] mx-auto md:ml-auto md:mr-0 md:pr-2`}
         initial={reduceMotion ? false : { opacity: 0, scale: 0.94, x: 28 }}
         animate={{ opacity: 1, scale: 1, x: 0 }}
         transition={{ duration: 0.45, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
