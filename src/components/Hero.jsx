@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import styles from '../style'
 import CTAButton from './CTAButton'
-import HeroLogo from './HeroLogo'
+import HeroVisual from './HeroVisual'
+import HeroTrustBar from './HeroTrustBar'
 import RevealText from './RevealText'
 import EntityNav from './seo/EntityNav'
+import { INTERNATIONAL_STATEMENT } from '../data/entity'
 
 const layer = {
   hidden: { opacity: 0, y: 14 },
@@ -18,21 +20,12 @@ const Hero = () => {
   return (
     <section
       id='home'
-      className={`relative ${styles.paddingY} pt-28 sm:pt-32 pb-10 sm:pb-14 md:pb-16`}
+      className={`hero-international-bg relative ${styles.paddingY} pt-28 sm:pt-32 pb-12 sm:pb-16 md:pb-20 -mx-6 sm:-mx-16 px-6 sm:px-16 rounded-none`}
       aria-labelledby='hero-heading'
     >
-      <div
-        className='pointer-events-none absolute right-0 top-[18%] hidden md:block w-[42%] max-w-[520px] h-[62%] opacity-70'
-        aria-hidden='true'
-        style={{
-          background:
-            'radial-gradient(ellipse 80% 70% at 70% 45%, rgba(92, 225, 230, 0.07) 0%, transparent 68%)',
-        }}
-      />
-
-      <div className='relative z-[1] flex flex-col md:flex-row md:items-center md:justify-between gap-12 lg:gap-16 xl:gap-20'>
+      <div className='relative z-[1] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-10 xl:gap-16 max-w-[1280px] mx-auto'>
         <motion.div
-          className='flex-1 min-w-0 max-w-[640px]'
+          className='flex-1 min-w-0 max-w-[680px]'
           initial={reduceMotion ? false : 'hidden'}
           animate='visible'
           variants={{
@@ -41,18 +34,18 @@ const Hero = () => {
           }}
         >
           <motion.div
-            className='inline-flex flex-row items-center py-[6px] px-3 xs:px-4 bg-discount-gradient rounded-[10px] mb-5 sm:mb-6 border border-white/5 max-w-full'
+            className='inline-flex flex-row items-center gap-3 py-[7px] px-4 bg-[#030912]/80 rounded-full mb-6 sm:mb-7 border border-cyan-500/20 backdrop-blur-sm'
             variants={layer}
           >
-            <div className='w-[8px] h-[8px] rounded-full bg-secondary mr-3 shrink-0 animate-pulse-glow' aria-hidden='true' />
-            <p className={`${styles.paragraph} text-[13px] xs:text-[14px] sm:text-[16px] mb-0`}>
-              Engineering intelligent technology for a connected future.
+            <div className='w-[8px] h-[8px] rounded-full bg-secondary shrink-0 animate-pulse-glow' aria-hidden='true' />
+            <p className='font-poppins text-[12px] xs:text-[13px] sm:text-[14px] text-dimWhite mb-0 tracking-[0.06em]'>
+              Global Technology Enterprise · India
             </p>
           </motion.div>
 
           <h1
             id='hero-heading'
-            className='font-poppins font-semibold text-[30px] leading-[38px] xs:text-[42px] xs:leading-[52px] ss:text-[64px] ss:leading-[84px] md:text-[68px] md:leading-[96px] lg:text-[72px] lg:leading-[100px] text-white break-words'
+            className='font-poppins font-semibold text-[32px] leading-[40px] xs:text-[44px] xs:leading-[54px] ss:text-[58px] ss:leading-[72px] md:text-[64px] md:leading-[88px] lg:text-[70px] lg:leading-[96px] text-white break-words'
           >
             <RevealText>
               INTELLIGENCE <br className='xs:block hidden' />
@@ -62,47 +55,55 @@ const Hero = () => {
           </h1>
 
           <motion.p
-            className={`${styles.paragraph} max-w-[520px] mt-5 sm:mt-7 lg:mt-8`}
+            className={`${styles.paragraph} max-w-[560px] mt-6 sm:mt-8 text-[16px] sm:text-[18px] leading-[28px] sm:leading-[32px]`}
             variants={layer}
           >
-            Bitvion Technologies is a proprietary technology enterprise based in Kerala, India,
-            building intelligent software, AI solutions, automation systems and
-            digital products. {' '}
+            Bitvion Technologies builds intelligent software, AI solutions, automation systems
+            and digital products for modern organizations. {INTERNATIONAL_STATEMENT}{' '}
+            Founded and owned by{' '}
             <Link to='/company/founder' className='text-secondary hover:text-white transition-colors'>
               Akhil Shijo
             </Link>
-            {' '}is the Founder &amp; Proprietor of Bitvion Technologies.
+            .
           </motion.p>
 
-          <motion.div variants={layer} className='mt-5 sm:mt-6'>
+          <motion.div
+            className='flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 mt-8 sm:mt-10 w-full'
+            variants={layer}
+          >
+            <CTAButton to='/solutions' variant='primary' styles='w-full xs:w-auto text-center'>
+              Explore Solutions
+            </CTAButton>
+            <CTAButton to='/global' variant='secondary' styles='w-full xs:w-auto text-center'>
+              Global Capabilities
+            </CTAButton>
+            <CTAButton to='/contact' variant='secondary' styles='w-full xs:w-auto text-center'>
+              Talk to Bitvion
+            </CTAButton>
+          </motion.div>
+
+          <motion.div variants={layer} className='mt-6 sm:mt-7'>
             <EntityNav
               label='Explore Bitvion Technologies'
               links={[
                 { name: 'About', path: '/company/about' },
                 { name: 'Founder', path: '/company/founder' },
                 { name: 'YatrikERP', path: '/products/yatrikerp' },
-                { name: 'Solutions', path: '/solutions' },
+                { name: 'Insights', path: '/insights' },
               ]}
             />
           </motion.div>
 
-          <motion.div className='flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 mt-8 sm:mt-10 w-full' variants={layer}>
-            <CTAButton to='/solutions' variant='primary' styles='w-full xs:w-auto text-center'>
-              Explore Solutions
-            </CTAButton>
-            <CTAButton to='/contact' variant='secondary' styles='w-full xs:w-auto text-center'>
-              Talk to Bitvion
-            </CTAButton>
-          </motion.div>
+          <HeroTrustBar />
         </motion.div>
 
         <motion.div
-          className='flex-shrink-0 w-full md:w-auto flex justify-center md:justify-end items-center'
-          initial={reduceMotion ? false : { opacity: 0, scale: 0.96, y: 12 }}
+          className='flex-shrink-0 w-full lg:w-[44%] xl:w-[42%] flex justify-center lg:justify-end items-center'
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.96, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.55, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
         >
-          <HeroLogo />
+          <HeroVisual />
         </motion.div>
       </div>
     </section>

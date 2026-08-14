@@ -2,13 +2,13 @@ import React from 'react'
 import Hero from '../components/Hero'
 import TechnologyPositioning from '../components/TechnologyPositioning'
 import CoreCapabilities from '../components/CoreCapabilities'
+import GlobalPreview from '../components/GlobalPreview'
 import AISection from '../components/AISection'
 import SoftwareSection from '../components/SoftwareSection'
 import ProcessTimeline from '../components/ProcessTimeline'
 import AutomationSection from '../components/AutomationSection'
 import DigitalTransformationPreview from '../components/DigitalTransformationPreview'
 import ProductPreview from '../components/ProductPreview'
-import GlobalPreview from '../components/GlobalPreview'
 import FounderPreview from '../components/FounderPreview'
 import JobOpenings from '../components/JobOpenings'
 import FinalCTA from '../components/FinalCTA'
@@ -45,15 +45,15 @@ const Home = () => {
       </div>
       <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <TechnologyPositioning />
           <CoreCapabilities />
+          <TechnologyPositioning />
+          <GlobalPreview />
+          <ProductPreview />
           <AISection />
           <SoftwareSection />
           <ProcessTimeline />
           <AutomationSection />
           <DigitalTransformationPreview />
-          <ProductPreview />
-          <GlobalPreview />
           <FounderPreview />
           <JobOpenings />
           <FinalCTA />

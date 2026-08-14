@@ -52,7 +52,7 @@ export const entity = {
 
 export const HOME_TITLE = 'Bitvion Technologies | AI, Software & Digital Transformation'
 export const HOME_DESCRIPTION =
-  'Bitvion Technologies, founded and owned by Akhil Shijo, builds intelligent software, AI solutions, automation systems and digital products for modern organizations.'
+  'Bitvion Technologies, founded and owned by Akhil Shijo, builds intelligent software, AI solutions, automation systems and digital products for organizations in India and international markets.'
 
 export const FOUNDER_STATEMENT =
   'Akhil Shijo is the Founder & Proprietor of Bitvion Technologies.'
