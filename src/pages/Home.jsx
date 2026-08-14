@@ -38,11 +38,7 @@ const Home = () => {
           }),
         ]}
       />
-      <div className={`bg-primary ${styles.flexStart}`}>
-        <div className={`${styles.boxWidth} ${styles.paddingX}`}>
-          <Hero />
-        </div>
-      </div>
+      <Hero />
       <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <TechnologyPositioning />

@@ -12,7 +12,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -25,50 +25,53 @@ const Header = () => {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-40 overflow-visible transition-all duration-500 ${
-          scrolled
-            ? 'bg-primary/85 backdrop-blur-xl border-b border-white/5 shadow-lg'
-            : 'bg-transparent'
-        }`}
+        className='fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4'
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        <nav className='w-full flex py-3 sm:py-5 justify-between items-center gap-3 max-w-[1280px] mx-auto sm:px-16 px-4 xs:px-6' aria-label='Main navigation'>
-          <BrandLogo variant='header' className='min-w-0 shrink' />
+        <div
+          className={`max-w-[1400px] mx-auto flex items-center gap-3 sm:gap-4 h-[72px] sm:h-[76px] transition-all duration-500 ${
+            scrolled ? 'glass-nav glass-nav-scrolled' : ''
+          }`}
+        >
+          <BrandLogo variant='header' className='min-w-0 shrink z-[2]' />
 
-          <ul className='list-none md:flex hidden justify-end items-center flex-1 ml-8'>
-            {navLinks.map((nav, i) => (
-              <li
-                key={nav.id}
-                className={`font-poppins font-normal text-[15px] ${i === navLinks.length - 1 ? 'mr-6' : 'mr-8'}`}
-              >
-                <Link
-                  to={nav.path}
-                  className='text-dimWhite hover:text-white transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-secondary rounded px-1 py-1 relative group'
-                >
-                  {nav.title}
-                  <span className='absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full' aria-hidden='true' />
-                </Link>
-              </li>
-            ))}
-            <li>
-              <CTAButton to='/contact' variant='primary' styles='py-3 px-5 text-[15px]'>
-                Talk to Bitvion
-              </CTAButton>
-            </li>
-          </ul>
+          <nav
+            className='glass-nav-pill hidden md:flex flex-1 items-center justify-between min-w-0 ml-2 lg:ml-4 px-4 lg:px-6 py-2.5 rounded-2xl'
+            aria-label='Main navigation'
+          >
+            <ul className='list-none flex items-center flex-wrap gap-x-1 lg:gap-x-2'>
+              {navLinks.map((nav) => (
+                <li key={nav.id}>
+                  <Link
+                    to={nav.path}
+                    className='font-poppins font-normal text-[14px] lg:text-[15px] text-dimWhite hover:text-white transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-secondary rounded-lg px-2.5 py-1.5 relative group whitespace-nowrap'
+                  >
+                    {nav.title}
+                    <span
+                      className='absolute bottom-1 left-2.5 right-2.5 h-px scale-x-0 bg-secondary/70 transition-transform duration-300 group-hover:scale-x-100 origin-left'
+                      aria-hidden='true'
+                    />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <CTAButton to='/contact' variant='primary' styles='py-2.5 px-5 text-[14px] shrink-0 ml-3'>
+              Talk to Bitvion
+            </CTAButton>
+          </nav>
 
           <button
             type='button'
-            className='md:hidden flex p-2 min-w-[44px] min-h-[44px] items-center justify-center focus-visible:ring-2 focus-visible:ring-secondary rounded'
+            className='md:hidden flex ml-auto p-2 min-w-[44px] min-h-[44px] items-center justify-center focus-visible:ring-2 focus-visible:ring-secondary rounded-lg glass-nav-pill'
             onClick={() => setToggle(true)}
             aria-label='Open menu'
             aria-expanded={toggle}
           >
-            <img src={menu} alt='' className='w-[28px] h-[28px] object-contain' />
+            <img src={menu} alt='' className='w-[26px] h-[26px] object-contain' />
           </button>
-        </nav>
+        </div>
       </motion.header>
 
       <MobileMenu isOpen={toggle} onClose={() => setToggle(false)} />
