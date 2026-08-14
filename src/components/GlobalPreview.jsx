@@ -15,20 +15,20 @@ const GlobalPreview = () => {
 
       <div className={layout.sectionInfo}>
         <SectionHeading
-          eyebrow='International Technology'
+          eyebrow='Global Technology'
           title={
             <>
-              ENGINEERED IN INDIA. <br className='sm:block hidden' />
-              <span className='text-gradient'>BUILT FOR GLOBAL SCALE.</span>
+              GLOBAL TECHNOLOGY. <br className='sm:block hidden' />
+              <span className='text-gradient'>BUILT FROM INDIA.</span>
             </>
           }
-          subtitle='Bitvion Technologies delivers software, AI, automation and digital products to organizations in India and international markets — without claiming physical offices abroad.'
+          subtitle='Bitvion Technologies is based in Kerala, India and is building technology capabilities for businesses in India and international markets.'
         />
 
-        <p className={`${styles.paragraph} mt-6 max-w-[520px]`}>
-          Remote engineering partnerships and structured project delivery across Europe,
-          the United Kingdom, the Netherlands and Scotland — alongside a growing base
-          of technology work in India.
+        <p className={`${styles.paragraph} mt-6 max-w-[500px]`}>
+          Building technology capabilities for organizations in India and
+          international markets, including Europe, the United Kingdom,
+          the Netherlands and Scotland.
         </p>
       </div>
     </section>
