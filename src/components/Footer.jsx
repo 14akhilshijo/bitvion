@@ -28,7 +28,7 @@ const footerSections = [
       { name: 'About', path: '/company/about' },
       { name: 'Founder', path: '/company/founder' },
       { name: 'Technology', path: '/company/technology' },
-      { name: 'Careers', path: '/careers' },
+      { name: 'Careers', path: '/company/careers' },
       { name: 'Insights', path: '/insights' },
     ],
   },

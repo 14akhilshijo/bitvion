@@ -75,6 +75,34 @@ const sendViaMailto = (to, subject, data) => {
   window.location.href = href
 }
 
+export const submitApplication = async (data, cvFile) => {
+  if (data.website) return { success: true, applicationId: 'BITVION-APP-HONEYPOT' }
+
+  const formData = new FormData()
+  Object.entries(data).forEach(([key, value]) => {
+    if (value !== undefined && value !== null && value !== '') {
+      formData.append(key, String(value))
+    }
+  })
+  formData.append('privacyConsent', 'true')
+  formData.append('cv', cvFile)
+
+  const response = await fetch('/api/submit-application', {
+    method: 'POST',
+    body: formData,
+  })
+
+  const result = await response.json().catch(() => ({}))
+
+  if (!response.ok || !result.success) {
+    throw new Error(
+      result.error || "We couldn't complete your application submission. Please try again.",
+    )
+  }
+
+  return result
+}
+
 export const submitForm = async (endpoint, data) => {
   const to = RECIPIENTS[endpoint] || 'info@bitvion.in'
   const subject = SUBJECTS[endpoint] || 'Website Request — Bitvion Technologies'

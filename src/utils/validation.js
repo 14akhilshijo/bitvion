@@ -45,6 +45,31 @@ export const careersSchema = z.object({
   privacyConsent: z.literal(true, { errorMap: () => ({ message: 'Privacy consent is required' }) }),
 })
 
+export const applicationSchema = z.object({
+  name: z.string().min(2, 'Full name is required'),
+  age: z.coerce.number().min(16, 'Valid age is required').max(80, 'Valid age is required'),
+  gender: z.string().optional(),
+  email: z.string().email('Valid email is required'),
+  phone: z.string().min(8, 'Phone number is required'),
+  currentLocation: z.string().min(2, 'Current location is required'),
+  position: z.string().min(2, 'Position is required'),
+  employmentType: z.string().optional(),
+  preferredLocation: z.string().min(1, 'Preferred location is required'),
+  qualification: z.string().optional(),
+  college: z.string().optional(),
+  graduationYear: z.string().optional(),
+  experience: z.string().optional(),
+  skills: z.string().optional(),
+  currentRole: z.string().optional(),
+  noticePeriod: z.string().optional(),
+  linkedin: z.string().optional(),
+  github: z.string().optional(),
+  portfolio: z.string().optional(),
+  message: z.string().optional(),
+  website: z.string().optional(),
+  privacyConsent: z.literal(true, { errorMap: () => ({ message: 'Privacy consent is required' }) }),
+})
+
 export const validateForm = (schema, data) => {
   const result = schema.safeParse(data)
   if (result.success) return { success: true, data: result.data, errors: {} }

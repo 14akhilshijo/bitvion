@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { jobOpenings } from '../data/careers'
+import { fullTimeRoles } from '../data/careers'
 import AnimateIn, { StaggerContainer, StaggerItem } from './AnimateIn'
 import CTAButton from './CTAButton'
 import styles from '../style'
 
 const JobOpenings = ({ showAll = false, className = '' }) => {
-  const jobs = showAll ? jobOpenings : jobOpenings.slice(0, 3)
+  const jobs = showAll ? fullTimeRoles : fullTimeRoles.slice(0, 3)
 
   return (
     <section id='careers-openings' className={`${styles.paddingY} ${className}`} aria-labelledby='openings-heading'>
@@ -25,7 +25,7 @@ const JobOpenings = ({ showAll = false, className = '' }) => {
             </p>
           </div>
           {!showAll && (
-            <CTAButton to='/careers' variant='secondary'>
+            <CTAButton to='/company/careers' variant='secondary'>
               View All Roles
             </CTAButton>
           )}
@@ -53,14 +53,14 @@ const JobOpenings = ({ showAll = false, className = '' }) => {
               <p className='font-poppins text-dimWhite/70 text-[13px] mb-3'>{job.location}</p>
               <p className='font-poppins text-dimWhite text-[15px] leading-[26px] mb-5'>{job.description}</p>
               <div className='flex flex-wrap gap-2 mb-6'>
-                {job.skills.map((skill) => (
+                {job.skills.slice(0, 5).map((skill) => (
                   <span key={skill} className='px-3 py-1 rounded-full bg-primary border border-white/10 text-[12px] font-poppins text-dimWhite'>
                     {skill}
                   </span>
                 ))}
               </div>
               <Link
-                to={`/careers?role=${encodeURIComponent(job.title)}`}
+                to={`/company/careers?apply=${job.slug}`}
                 className='inline-flex items-center gap-2 font-poppins font-medium text-secondary text-[14px] group-hover:translate-x-1 transition-transform'
               >
                 Apply for this role →

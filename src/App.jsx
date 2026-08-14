@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import CookieConsent from './components/CookieConsent'
@@ -17,7 +17,7 @@ const CompanyOverview = lazyNamed(() => import('./pages/company/CompanyPages'), 
 const AboutPage = lazyNamed(() => import('./pages/company/CompanyPages'), 'AboutPage')
 const FounderPage = lazyNamed(() => import('./pages/company/CompanyPages'), 'FounderPage')
 const TechnologyPage = lazyNamed(() => import('./pages/company/CompanyPages'), 'TechnologyPage')
-const CompanyCareersPage = lazyNamed(() => import('./pages/company/CompanyPages'), 'CompanyCareersPage')
+const CompanyCareersPage = lazyNamed(() => import('./pages/company/CareersPage'), 'CompanyCareersPage')
 const ProductsOverview = lazyNamed(() => import('./pages/products/ProductPages'), 'ProductsOverview')
 const YatrikERPPage = lazyNamed(() => import('./pages/products/ProductPages'), 'YatrikERPPage')
 const InsightsPage = lazyNamed(() => import('./pages/insights/InsightPages'), 'InsightsPage')
@@ -25,7 +25,6 @@ const InsightArticlePage = lazyNamed(() => import('./pages/insights/InsightPages
 const ContactPage = lazy(() => import('./pages/ContactPages'))
 const RequestProposalPage = lazyNamed(() => import('./pages/ContactPages'), 'RequestProposalPage')
 const RequestDemoPage = lazyNamed(() => import('./pages/ContactPages'), 'RequestDemoPage')
-const CareersPage = lazyNamed(() => import('./pages/ContactPages'), 'CareersPage')
 const LegalPage = lazy(() => import('./pages/LegalPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
@@ -60,7 +59,7 @@ const App = () => (
         <Route path='contact' element={<S><ContactPage /></S>} />
         <Route path='request-proposal' element={<S><RequestProposalPage /></S>} />
         <Route path='request-demo' element={<S><RequestDemoPage /></S>} />
-        <Route path='careers' element={<S><CareersPage /></S>} />
+        <Route path='careers' element={<Navigate to='/company/careers' replace />} />
         <Route path='privacy-policy' element={<S><LegalPage /></S>} />
         <Route path='terms' element={<S><LegalPage /></S>} />
         <Route path='cookie-policy' element={<S><LegalPage /></S>} />

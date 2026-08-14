@@ -5,7 +5,7 @@ const items = ['AI', 'SOFTWARE', 'AUTOMATION', 'CLOUD', 'DIGITAL PRODUCTS']
 
 const HeroTechStrip = () => (
   <div
-    className='relative z-10 w-full border-t border-white/[0.06] py-5 sm:py-6'
+    className='hero-tech-strip relative z-10 w-full border-t border-white/[0.06] py-5 sm:py-6'
     aria-label='Bitvion technology focus areas'
   >
     <ul className='flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-6 max-w-[900px] mx-auto px-4' role='list'>

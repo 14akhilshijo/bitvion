@@ -21,6 +21,7 @@ export const navLinks = [
   { id: "global", title: "Global", path: "/global" },
   { id: "insights", title: "Insights", path: "/insights" },
   { id: "company", title: "Company", path: "/company" },
+  { id: "careers", title: "Careers", path: "/company/careers" },
 ];
 
 export const capabilities = [

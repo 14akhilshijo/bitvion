@@ -12,6 +12,7 @@ import {
   careersSchema,
   sanitizeObject,
 } from './validation/schemas.js'
+import submitApplicationRouter from './routes/submitApplication.js'
 import { getRecipient, sendEmail, formatSubmission } from './utils/email.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -46,6 +47,7 @@ app.use(cors({
   methods: ['GET', 'POST'],
 }))
 
+app.use('/api', submitApplicationRouter)
 app.use(express.json({ limit: '100kb' }))
 
 const formLimiter = rateLimit({

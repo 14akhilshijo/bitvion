@@ -229,15 +229,4 @@ export const TechnologyPage = () => (
   </PageShell>
 )
 
-export const CompanyCareersPage = () => (
-  <PageShell>
-    <PageMeta title='Careers | Bitvion Technologies' description='Build the future with Bitvion Technologies. Engineering careers and internship opportunities.' path='/company/careers' />
-    <PageHero eyebrow='Careers' title={<>BUILD THE FUTURE <br className='sm:block hidden' /><span className='text-gradient'>WITH BITVION.</span></>} subtitle='Join a technology company focused on engineering, AI and product development.' breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'Careers', path: '/company/careers' }]} />
-    <JobOpenings showAll className='!py-0' />
-    <AnimateIn className='mt-12'>
-      <Link to='/careers' className='inline-flex items-center gap-2 font-poppins text-secondary hover:text-white transition-colors group'>
-        Submit Application <img src={arrowUp} alt='' className='w-[16px] h-[16px] rotate-45 group-hover:translate-x-1 transition-transform' />
-      </Link>
-    </AnimateIn>
-  </PageShell>
-)
+export const CompanyCareersPage = () => null // See pages/company/CareersPage.jsx

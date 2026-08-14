@@ -1,6 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 import { useReducedMotion } from 'framer-motion'
 
+const getParticleCount = () => {
+  if (typeof window === 'undefined') return 48
+  const narrow = window.matchMedia('(max-width: 767px)').matches
+  const coarse = window.matchMedia('(pointer: coarse)').matches
+  if (narrow || coarse) return 22
+  return 48
+}
+
 const HeroBackground = () => {
   const canvasRef = useRef(null)
   const reduceMotion = useReducedMotion()
@@ -12,24 +20,32 @@ const HeroBackground = () => {
     if (!canvas) return undefined
 
     const ctx = canvas.getContext('2d')
-    let frame = 0
     let raf = 0
     let visible = true
+    let count = getParticleCount()
 
-    const particles = Array.from({ length: 48 }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      r: Math.random() * 1.2 + 0.3,
-      vx: (Math.random() - 0.5) * 0.00008,
-      vy: (Math.random() - 0.5) * 0.00008,
-      a: Math.random() * 0.35 + 0.08,
-    }))
+    const createParticles = (n) =>
+      Array.from({ length: n }, () => ({
+        x: Math.random(),
+        y: Math.random(),
+        r: Math.random() * 1.2 + 0.3,
+        vx: (Math.random() - 0.5) * 0.00008,
+        vy: (Math.random() - 0.5) * 0.00008,
+        a: Math.random() * 0.35 + 0.08,
+      }))
+
+    let particles = createParticles(count)
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      const dpr = Math.min(window.devicePixelRatio || 1, window.matchMedia('(max-width: 767px)').matches ? 1.5 : 2)
       canvas.width = canvas.offsetWidth * dpr
       canvas.height = canvas.offsetHeight * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      const next = getParticleCount()
+      if (next !== count) {
+        count = next
+        particles = createParticles(count)
+      }
     }
 
     const draw = () => {
@@ -49,7 +65,6 @@ const HeroBackground = () => {
         ctx.fill()
       })
 
-      frame += 1
       raf = requestAnimationFrame(draw)
     }
 
@@ -74,7 +89,12 @@ const HeroBackground = () => {
     <div className='hero-bg absolute inset-0 overflow-hidden pointer-events-none' aria-hidden='true'>
       <div className='hero-bg-grid absolute inset-0' />
       <div className='hero-bg-glow absolute inset-0' />
-      {!reduceMotion && <canvas ref={canvasRef} className='absolute inset-0 w-full h-full opacity-60' />}
+      {!reduceMotion && (
+        <canvas
+          ref={canvasRef}
+          className='absolute inset-0 w-full h-full opacity-60 max-lg:opacity-45'
+        />
+      )}
     </div>
   )
 }

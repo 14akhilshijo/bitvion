@@ -13,6 +13,7 @@ const FormField = ({
   rows,
   accept,
   autoComplete,
+  readOnly = false,
 }) => {
   const id = `field-${name}`
   const errorId = `${id}-error`
@@ -68,10 +69,11 @@ const FormField = ({
           placeholder={placeholder}
           accept={accept}
           autoComplete={autoComplete}
+          readOnly={readOnly}
           inputMode={type === 'email' ? 'email' : type === 'tel' ? 'tel' : undefined}
           aria-invalid={!!error}
           aria-describedby={error ? errorId : undefined}
-          className={baseClass}
+          className={`${baseClass} ${readOnly ? 'opacity-80 cursor-not-allowed' : ''}`}
         />
       )}
 
