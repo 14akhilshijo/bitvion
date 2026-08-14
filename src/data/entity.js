@@ -14,12 +14,15 @@ export const entity = {
     legalName: 'Bitvion Technologies',
     url: `${SITE_URL}/`,
     email: 'info@bitvion.in',
+    businessEmail: 'business@bitvion.in',
     logo: `${SITE_URL}/bitvion-logo.jpeg`,
     image: `${SITE_URL}/bitvion-logo.jpeg`,
     foundingDate: '2026-01-24',
-    organizationType: 'Proprietary enterprise',
+    organizationType: 'Proprietary',
+    enterpriseType: 'Micro',
     majorActivity: 'Services',
     primaryActivity: 'Computer programming, consultancy and related activities',
+    udyam: 'UDYAM-KL-03-0036543',
     location: {
       locality: 'Kerala',
       region: 'Kerala',
@@ -36,30 +39,32 @@ export const entity = {
     jobTitle: 'Founder & Proprietor',
     url: `${SITE_URL}/company/founder`,
     image: `${SITE_URL}/founder.jpeg`,
+    // Add verified public profile URLs only. Never invent placeholders.
+    sameAs: [],
   },
   product: {
     name: 'YatrikERP',
     url: `${SITE_URL}/products/yatrikerp`,
     description:
-      'YatrikERP is an AI-powered modular operations platform developed by Bitvion Technologies for transportation businesses.',
+      'YatrikERP is an AI-powered modular operations platform developed by Bitvion Technologies for transportation, hospital and school operations.',
   },
 }
 
-export const HOME_TITLE = 'Bitvion Technologies | AI, Software & Digital Technology'
+export const HOME_TITLE = 'Bitvion Technologies | AI, Software & Digital Transformation'
 export const HOME_DESCRIPTION =
-  'Bitvion Technologies is a Kerala, India-based technology business building intelligent software, AI solutions, automation systems and digital products for organizations in India and international markets.'
+  'Bitvion Technologies, founded and owned by Akhil Shijo, builds intelligent software, AI solutions, automation systems and digital products for modern organizations.'
 
 export const FOUNDER_STATEMENT =
   'Akhil Shijo is the Founder & Proprietor of Bitvion Technologies.'
 
 export const COMPANY_STATEMENT =
-  'Bitvion Technologies is a technology business based in Kerala, India.'
+  'Bitvion Technologies is a proprietary technology enterprise founded and owned by Akhil Shijo.'
 
 export const PRODUCT_STATEMENT =
   'YatrikERP is a technology product developed by Bitvion Technologies.'
 
 export const INTERNATIONAL_STATEMENT =
-  'Building technology capabilities for organizations in India and international markets.'
+  'Serving businesses and exploring opportunities across India and international markets.'
 
 export const CAPABILITIES = [
   'Software Engineering',
@@ -71,4 +76,67 @@ export const CAPABILITIES = [
   'Data & Analytics',
   'UI/UX Engineering',
   'Digital Products',
+]
+
+export const FOUNDER_EXPERTISE = [
+  'Technology Strategy',
+  'Software Engineering',
+  'Artificial Intelligence',
+  'Intelligent Automation',
+  'Product Development',
+  'Digital Transformation',
+]
+
+export const founderFaqs = [
+  {
+    question: 'Who is Akhil Shijo?',
+    answer:
+      'Akhil Shijo is the Founder & Proprietor of Bitvion Technologies, a proprietary technology enterprise focused on software engineering, AI, intelligent automation and digital products.',
+  },
+  {
+    question: "What is Akhil Shijo's role at Bitvion Technologies?",
+    answer:
+      'Akhil Shijo is the Founder & Proprietor of Bitvion Technologies. He leads the technology direction of the enterprise across software, AI, automation and digital product development.',
+  },
+  {
+    question: 'What is Bitvion Technologies?',
+    answer:
+      'Bitvion Technologies is a proprietary technology enterprise based in India that builds intelligent software, AI solutions, automation systems and digital products, including YatrikERP.',
+  },
+  {
+    question: 'What does Bitvion Technologies build?',
+    answer:
+      'Bitvion Technologies builds software engineering solutions, AI and machine learning systems, intelligent automation, cloud and digital transformation capabilities, and digital products such as YatrikERP.',
+  },
+  {
+    question: 'What is YatrikERP?',
+    answer:
+      'YatrikERP is an AI-powered modular operations platform developed by Bitvion Technologies for transportation, hospital and school operations.',
+  },
+]
+
+export const companyFaqs = [
+  {
+    question: 'What is Bitvion Technologies?',
+    answer:
+      'Bitvion Technologies is a proprietary technology enterprise founded and owned by Akhil Shijo. It focuses on computer programming, consultancy and related activities.',
+  },
+  {
+    question: 'What services does Bitvion Technologies provide?',
+    answer:
+      'Bitvion Technologies provides software engineering, artificial intelligence, intelligent automation, cloud technology, digital transformation, data and analytics, UI/UX engineering and digital product development.',
+  },
+  {
+    question: 'Who founded Bitvion Technologies?',
+    answer: 'Bitvion Technologies was founded and is owned by Akhil Shijo.',
+  },
+  {
+    question: 'Where is Bitvion Technologies based?',
+    answer: 'Bitvion Technologies is based in Kerala, India, with presence in Bangalore, India.',
+  },
+  {
+    question: 'What is YatrikERP?',
+    answer:
+      'YatrikERP is a technology product developed by Bitvion Technologies for AI-assisted business operations in transportation, hospitals and schools.',
+  },
 ]

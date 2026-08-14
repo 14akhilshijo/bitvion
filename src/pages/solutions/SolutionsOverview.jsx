@@ -18,7 +18,7 @@ const SolutionsOverview = () => {
   return (
     <PageShell>
       <PageMeta
-        title='Technology Solutions | Bitvion Technologies'
+        title='Technology Solutions | AI, Software & Automation | Bitvion Technologies'
         description='AI, software engineering, intelligent automation, cloud technology, digital transformation and data analytics solutions from Bitvion Technologies.'
         path='/solutions'
       />

@@ -11,7 +11,7 @@ export const globalMarketsList = [
       description: 'Software development, AI solutions, automation and digital transformation for businesses in the Netherlands from Bitvion Technologies.',
       keywords: 'technology company Netherlands, software development Netherlands, AI solutions Netherlands, digital transformation Netherlands',
     },
-    cta: { label: 'Talk to Bitvion Netherlands', path: '/contact?region=netherlands' },
+    cta: { label: 'Talk to Bitvion', path: '/contact?region=netherlands' },
   },
   {
     slug: 'united-kingdom',

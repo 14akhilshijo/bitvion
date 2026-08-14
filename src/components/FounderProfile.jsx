@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { founderPhoto } from '../assets'
 import AnimateIn from './AnimateIn'
 import EntityNav from './seo/EntityNav'
+import FaqSection from './seo/FaqSection'
+import { FOUNDER_EXPERTISE, founderFaqs } from '../data/entity'
 import styles from '../style'
 
 const glance = [
@@ -11,13 +13,6 @@ const glance = [
   { label: 'Expertise', value: 'Software Engineering, AI Solutions', icon: 'code' },
   { label: 'Approach', value: 'Practical Problem Solving', icon: 'target' },
   { label: 'Vision', value: 'Intelligent Systems, Global Impact', icon: 'globe' },
-]
-
-const strengths = [
-  'Technology Strategy',
-  'AI & Automation',
-  'Product Development',
-  'System Architecture',
 ]
 
 const highlights = [
@@ -31,6 +26,96 @@ const philosophy = [
   { title: 'Build Smart', text: 'Design practical and scalable solutions', icon: 'bulb' },
   { title: 'Deliver Value', text: 'Focus on outcomes that matter', icon: 'shield' },
   { title: 'Grow Together', text: 'Empower teams and create opportunities', icon: 'people' },
+]
+
+const pageSections = [
+  {
+    id: 'about-akhil',
+    title: 'About Akhil Shijo',
+    body: [
+      'Akhil Shijo is a technology builder focused on software engineering, artificial intelligence, intelligent automation and practical digital systems. As the Founder & Proprietor of Bitvion Technologies, he shapes the enterprise around clear problem-solving, strong engineering fundamentals and products that organizations can actually operate.',
+      'His approach emphasizes systems that are intelligent where it matters and simple where complexity would only get in the way.',
+    ],
+  },
+  {
+    id: 'founder-of-bitvion',
+    title: 'Founder of Bitvion Technologies',
+    body: [
+      'Bitvion Technologies is a proprietary technology enterprise founded and owned by Akhil Shijo. The enterprise commenced business on 24 January 2026 with a primary activity of computer programming, consultancy and related services.',
+      'Under his leadership, Bitvion Technologies develops software, AI solutions, automation systems and digital products for modern organizations.',
+    ],
+  },
+  {
+    id: 'technology-philosophy',
+    title: 'Technology Philosophy',
+    body: [
+      'Technology is most useful when it reduces friction, improves decisions and supports real operations. Akhil Shijo\'s philosophy prioritizes deep understanding of the problem, practical architecture and measurable outcomes over novelty for its own sake.',
+      'That philosophy guides how Bitvion Technologies designs software platforms, AI-assisted workflows and automation systems.',
+    ],
+  },
+  {
+    id: 'areas-of-expertise',
+    title: 'Areas of Expertise',
+    body: [
+      'Core areas of focus include technology strategy, software engineering, artificial intelligence, intelligent automation, product development and digital transformation. These areas form the foundation of Bitvion Technologies’ solution and product work.',
+    ],
+    list: FOUNDER_EXPERTISE,
+  },
+  {
+    id: 'building-bitvion',
+    title: 'Building Bitvion',
+    body: [
+      'Building Bitvion Technologies means building a technology enterprise that can engineer reliable systems, evolve products thoughtfully and stay close to the operational realities of the organizations it serves.',
+      'The enterprise identity remains consistent: Bitvion Technologies as a proprietary technology enterprise, with Akhil Shijo as Founder & Proprietor.',
+    ],
+  },
+  {
+    id: 'product-vision',
+    title: 'Product Vision',
+    body: [
+      'Product work at Bitvion Technologies is oriented around modular platforms, clear workflows and AI-assisted operations that help teams coordinate day-to-day work with less manual overhead.',
+      'The goal is not to add technology for decoration — it is to create digital products that become dependable operational infrastructure.',
+    ],
+  },
+  {
+    id: 'yatrikerp',
+    title: 'YatrikERP',
+    body: [
+      'YatrikERP is a technology product developed by Bitvion Technologies. It is an AI-powered modular operations platform designed for transportation, hospital and school operations — covering scheduling, tracking, inventory, workflows and related operational modules.',
+    ],
+    link: { to: '/products/yatrikerp', label: 'Explore YatrikERP by Bitvion Technologies' },
+  },
+  {
+    id: 'technology-focus',
+    title: 'Technology Focus',
+    body: [
+      'The technology focus spans software engineering, AI and machine learning, intelligent automation, cloud technology, digital transformation, data and analytics, UI/UX engineering and digital products.',
+      'These capabilities support both custom solutions and product platforms such as YatrikERP.',
+    ],
+  },
+  {
+    id: 'leadership-philosophy',
+    title: 'Leadership Philosophy',
+    body: [
+      'Leadership at Bitvion Technologies is grounded in clarity, responsibility and long-term thinking. Akhil Shijo\'s approach emphasizes understanding problems deeply, building practical systems and delivering value that teams can sustain.',
+    ],
+  },
+  {
+    id: 'bitvion-technologies',
+    title: 'Bitvion Technologies',
+    body: [
+      'Bitvion Technologies is the proprietary technology enterprise through which software, AI, automation and digital products are developed. Official business identity includes Micro enterprise classification under Udyam registration and a services-major activity profile.',
+    ],
+    link: { to: '/company/about', label: 'About Bitvion Technologies' },
+  },
+  {
+    id: 'connect',
+    title: 'Connect',
+    body: [
+      'Organizations interested in software, AI, automation or digital products can reach Bitvion Technologies through the contact channels on this website.',
+    ],
+    link: { to: '/contact', label: 'Contact Bitvion Technologies' },
+  },
 ]
 
 const Icon = ({ name }) => {
@@ -91,7 +176,7 @@ const IconBox = ({ name }) => (
   </span>
 )
 
-const FounderPortrait = () => {
+const FounderPortrait = ({ priority = false }) => {
   const [hasError, setHasError] = useState(false)
 
   return (
@@ -103,7 +188,15 @@ const FounderPortrait = () => {
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className='absolute -inset-6 rounded-[32px] bg-secondary/15 blur-3xl animate-pulse-glow' aria-hidden='true' />
-      <div className='relative overflow-hidden rounded-[24px] border border-secondary/40 shadow-[0_0_50px_rgba(92,225,230,0.18)] aspect-[3/4] bg-primary'>
+      <div
+        className='absolute inset-0 rounded-full border border-secondary/20 opacity-40'
+        style={{
+          background:
+            'radial-gradient(circle at 30% 20%, rgba(92,225,230,0.12), transparent 55%), radial-gradient(circle at 70% 80%, rgba(92,225,230,0.08), transparent 50%)',
+        }}
+        aria-hidden='true'
+      />
+      <div className='relative overflow-hidden rounded-[24px] border border-secondary/40 shadow-[0_0_50px_rgba(92,225,230,0.18)] aspect-[3/4] bg-primary backdrop-blur-sm'>
         {hasError ? (
           <div className='w-full h-full flex items-center justify-center bg-dimBlue'>
             <span className='font-poppins font-bold text-secondary text-[48px]'>AS</span>
@@ -112,23 +205,91 @@ const FounderPortrait = () => {
           <img
             src={founderPhoto}
             alt='Akhil Shijo, Founder and Proprietor of Bitvion Technologies'
+            title='Akhil Shijo — Founder & Proprietor, Bitvion Technologies'
+            width={640}
+            height={853}
+            decoding='async'
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'auto'}
             className='w-full h-full object-cover object-[center_12%]'
             onError={() => setHasError(true)}
           />
         )}
         <div className='absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent' aria-hidden='true' />
         <div className='absolute inset-x-0 bottom-0 px-6 pb-7 pt-16 text-center'>
+          <p className='font-poppins text-secondary text-[11px] uppercase tracking-[0.22em] mb-2'>Founder Profile</p>
           <h3 className='font-poppins font-semibold text-white text-[22px] sm:text-[24px] tracking-[0.12em]'>
             AKHIL SHIJO
           </h3>
           <p className='font-poppins text-secondary text-[14px] mt-1'>Founder &amp; Proprietor</p>
           <p className='font-poppins text-dimWhite text-[13px] mt-1'>Bitvion Technologies</p>
+          <p className='font-poppins text-dimWhite/80 text-[12px] mt-3'>Founder of Bitvion Technologies</p>
+          <ul className='mt-4 flex flex-wrap justify-center gap-2' role='list'>
+            {['AI', 'SOFTWARE', 'AUTOMATION', 'PRODUCT'].map((tag) => (
+              <li
+                key={tag}
+                className='px-2.5 py-1 rounded-full border border-white/15 font-poppins text-[10px] tracking-wider text-dimWhite'
+              >
+                {tag}
+              </li>
+            ))}
+          </ul>
           <span className='mt-4 mx-auto block w-10 h-[2px] bg-secondary/70 rounded-full' aria-hidden='true' />
         </div>
       </div>
     </motion.div>
   )
 }
+
+const FounderLongForm = () => (
+  <div className='relative z-[1] mt-16 max-w-[800px] space-y-12'>
+    {pageSections.map((section) => (
+      <section key={section.id} id={section.id} aria-labelledby={`${section.id}-heading`}>
+        <h2 id={`${section.id}-heading`} className='font-poppins font-semibold text-white text-[22px] sm:text-[24px] mb-4'>
+          {section.title}
+        </h2>
+        {section.body.map((paragraph) => (
+          <p key={paragraph.slice(0, 40)} className={`${styles.paragraph} mb-4 last:mb-0`}>
+            {paragraph}
+          </p>
+        ))}
+        {section.list && (
+          <ul className='mt-5 flex flex-wrap gap-2' role='list'>
+            {section.list.map((item) => (
+              <li
+                key={item}
+                className='px-3.5 py-1.5 rounded-full border border-white/20 font-poppins text-[13px] text-dimWhite'
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+        {section.link && (
+          <Link
+            to={section.link.to}
+            className='inline-flex items-center gap-2 mt-5 font-poppins text-secondary hover:text-white transition-colors'
+          >
+            {section.link.label}
+            <span aria-hidden='true'>→</span>
+          </Link>
+        )}
+      </section>
+    ))}
+
+    <EntityNav
+      label='Related entities'
+      links={[
+        { name: 'Bitvion Technologies', path: '/company/about' },
+        { name: 'YatrikERP by Bitvion Technologies', path: '/products/yatrikerp' },
+        { name: 'Solutions', path: '/solutions' },
+        { name: 'Contact', path: '/contact' },
+      ]}
+    />
+
+    <FaqSection faqs={founderFaqs} />
+  </div>
+)
 
 const FounderProfile = ({ variant = 'preview' }) => {
   const isPreview = variant === 'preview'
@@ -144,6 +305,9 @@ const FounderProfile = ({ variant = 'preview' }) => {
 
       {!isPreview && (
         <header className='relative z-[1] mb-12 max-w-[720px]'>
+          <p className='font-poppins font-medium text-secondary text-[13px] uppercase tracking-[3px] mb-4'>
+            Leadership
+          </p>
           <h1
             id='founder-heading'
             className='font-poppins font-semibold text-white text-[34px] xs:text-[42px] sm:text-[52px] leading-[1.15]'
@@ -151,13 +315,11 @@ const FounderProfile = ({ variant = 'preview' }) => {
             Akhil Shijo
           </h1>
           <p className='font-poppins text-secondary text-[16px] sm:text-[18px] mt-3'>
-            Founder &amp; Proprietor, Bitvion Technologies
+            Founder &amp; Proprietor of Bitvion Technologies
           </p>
           <p className={`${styles.paragraph} mt-5`}>
-            Akhil Shijo is the Founder &amp; Proprietor of Bitvion Technologies,
-            a technology business based in Kerala, India. His work focuses on
-            software engineering, artificial intelligence, intelligent automation,
-            digital products, product development and technology strategy.
+            Technology builder focused on software, AI, automation and digital products.
+            Bitvion Technologies is founded and owned by Akhil Shijo.
           </p>
           <EntityNav
             className='mt-6'
@@ -165,7 +327,7 @@ const FounderProfile = ({ variant = 'preview' }) => {
             links={[
               { name: 'Bitvion Technologies', path: '/company/about' },
               { name: 'YatrikERP', path: '/products/yatrikerp' },
-              { name: 'Technology', path: '/company/technology' },
+              { name: 'Solutions', path: '/solutions' },
             ]}
           />
         </header>
@@ -180,13 +342,13 @@ const FounderProfile = ({ variant = 'preview' }) => {
             id={isPreview ? 'founder-heading' : undefined}
             className='font-poppins font-semibold text-white text-[28px] xs:text-[34px] sm:text-[42px] leading-[1.15] mb-5'
           >
-            Leading with <span className='text-gradient'>Vision.</span>
-            <br />
-            <span className='text-gradient'>Building the Future.</span>
+            THE PERSON <br className='sm:block hidden' />
+            BEHIND <span className='text-gradient'>BITVION.</span>
           </h2>
           <p className={`${styles.paragraph} text-[16px] max-w-[420px]`}>
-            Guiding Bitvion Technologies with a relentless focus on engineering excellence,
-            AI innovation and practical digital transformation.
+            Bitvion Technologies is founded and owned by Akhil Shijo, a technology
+            builder focused on software engineering, AI, intelligent automation and
+            practical digital systems.
           </p>
           <ul className='mt-8 space-y-4' role='list'>
             {highlights.map((item) => (
@@ -200,18 +362,26 @@ const FounderProfile = ({ variant = 'preview' }) => {
             ))}
           </ul>
           {isPreview && (
-            <Link
-              to='/company/founder'
-              className='inline-flex items-center gap-2 mt-8 font-poppins font-medium text-secondary hover:text-white transition-colors group'
-            >
-              Meet Akhil Shijo
-              <span className='transition-transform group-hover:translate-x-1' aria-hidden='true'>→</span>
-            </Link>
+            <div className='flex flex-col xs:flex-row flex-wrap gap-3 mt-8'>
+              <Link
+                to='/company/founder'
+                className='inline-flex items-center justify-center gap-2 px-5 py-3 rounded-[10px] bg-blue-gradient text-primary font-poppins font-medium text-[14px] hover:shadow-[0_0_24px_rgba(92,225,230,0.25)] transition-all'
+              >
+                VIEW FOUNDER PROFILE
+                <span aria-hidden='true'>→</span>
+              </Link>
+              <Link
+                to='/company/about'
+                className='inline-flex items-center justify-center gap-2 px-5 py-3 rounded-[10px] border border-secondary/40 text-secondary font-poppins font-medium text-[14px] hover:bg-secondary/10 transition-colors'
+              >
+                EXPLORE BITVION
+              </Link>
+            </div>
           )}
         </AnimateIn>
 
         <div className='lg:col-span-4'>
-          <FounderPortrait />
+          <FounderPortrait priority={!isPreview} />
         </div>
 
         <AnimateIn className='lg:col-span-4' direction='right' delay={0.1}>
@@ -233,7 +403,7 @@ const FounderProfile = ({ variant = 'preview' }) => {
             Core Strengths
           </p>
           <ul className='flex flex-wrap gap-2' role='list'>
-            {strengths.map((item) => (
+            {FOUNDER_EXPERTISE.map((item) => (
               <li
                 key={item}
                 className='px-3.5 py-1.5 rounded-full border border-white/20 font-poppins text-[12px] text-dimWhite hover:border-secondary/50 hover:text-white transition-colors'
@@ -272,15 +442,13 @@ const FounderProfile = ({ variant = 'preview' }) => {
                 to='/company/founder'
                 className='inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-secondary/50 font-poppins text-secondary text-[14px] hover:bg-secondary/10 transition-colors group'
               >
-                View Full Profile
+                VIEW FOUNDER PROFILE
                 <span className='transition-transform group-hover:translate-x-1' aria-hidden='true'>→</span>
               </Link>
             ) : (
               <p className='font-poppins text-dimWhite text-[15px] leading-[26px]'>
                 His work spans product development, AI systems, automation architecture and technology strategy —
                 guiding Bitvion Technologies&apos; approach to systems that deliver real operational value.
-                Engineering philosophy at Bitvion Technologies is to think deeply, build practical software
-                and deliver outcomes that organizations can use.
               </p>
             )}
           </div>
@@ -301,6 +469,8 @@ const FounderProfile = ({ variant = 'preview' }) => {
           </div>
         </div>
       </AnimateIn>
+
+      {!isPreview && <FounderLongForm />}
     </section>
   )
 }

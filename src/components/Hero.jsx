@@ -51,7 +51,7 @@ const Hero = () => {
           className={`${styles.paragraph} max-w-[520px] mt-5 sm:mt-8`}
           variants={layer}
         >
-          Bitvion Technologies is a technology business based in Kerala, India,
+          Bitvion Technologies is a proprietary technology enterprise based in Kerala, India,
           building intelligent software, AI solutions, automation systems and
           digital products. {' '}
           <Link to='/company/founder' className='text-secondary hover:text-white transition-colors'>

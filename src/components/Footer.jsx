@@ -67,15 +67,38 @@ const Footer = () => {
     <footer className={`${styles.flexCenter} ${styles.paddingY} flex-col`} role='contentinfo'>
       <div className='w-full mb-8'>
         <BrandLogo variant='footer' className='mb-4' />
-        <p className={`${styles.paragraph} max-w-[400px] text-[15px] mb-2`}>
-          Bitvion Technologies is a technology business based in Kerala, India.
+        <p className='font-poppins font-semibold text-white text-[16px] tracking-wide mb-2'>
+          BITVION TECHNOLOGIES
         </p>
-        <p className='font-poppins text-dimWhite text-[14px] mb-2'>
-          <Link to='/company/founder' className='hover:text-secondary transition-colors'>
+        <p className={`${styles.paragraph} max-w-[420px] text-[15px] mb-3`}>
+          Engineering intelligent software, AI solutions and digital products.
+        </p>
+        <p className='font-poppins text-dimWhite text-[14px] mb-4'>
+          Founded and owned by{' '}
+          <Link to='/company/founder' className='text-secondary hover:text-white transition-colors'>
             Akhil Shijo
           </Link>
-          {' '}is the Founder &amp; Proprietor of Bitvion Technologies.
+          .
         </p>
+        <nav aria-label='Company identity links' className='flex flex-wrap gap-x-4 gap-y-2 mb-4'>
+          {[
+            { name: 'About Bitvion', path: '/company/about' },
+            { name: 'Founder', path: '/company/founder' },
+            { name: 'Solutions', path: '/solutions' },
+            { name: 'Products', path: '/products' },
+            { name: 'YatrikERP', path: '/products/yatrikerp' },
+            { name: 'Insights', path: '/insights' },
+            { name: 'Contact', path: '/contact' },
+          ].map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className='font-poppins text-[13px] text-dimWhite hover:text-secondary transition-colors'
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
         <p className='font-poppins text-dimWhite text-[14px]'>
           <a href='https://bitvion.in/' className='hover:text-secondary transition-colors'>bitvion.in</a>
           {' · '}

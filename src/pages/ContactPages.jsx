@@ -13,7 +13,7 @@ import styles from '../style'
 
 const ContactPage = () => (
   <PageShell>
-    <PageMeta title='Contact | Bitvion Technologies' description='Contact Bitvion Technologies to discuss AI, software, automation and digital transformation projects.' path='/contact' />
+    <PageMeta title='Contact Bitvion Technologies | Technology & Software Solutions' description='Contact Bitvion Technologies to discuss AI, software, automation and digital transformation projects.' path='/contact' />
     <StructuredData data={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }])} />
     <PageHero
       eyebrow='Contact'

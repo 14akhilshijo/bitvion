@@ -29,7 +29,7 @@ export const solutionsList = [
     techStack: ['Python', 'JavaScript', 'TypeScript', 'Node.js', 'React', 'Next.js', 'Django', 'Flask', 'MongoDB', 'PostgreSQL', 'MySQL', 'AWS', 'Docker', 'Kubernetes'],
     techNote: 'Technology capabilities include the tools and frameworks our engineering team works with across projects.',
     meta: {
-      title: 'Software Development Services | Bitvion Technologies',
+      title: 'Software Development | Bitvion Technologies',
       description: 'Custom software development including web, mobile, SaaS, enterprise applications, APIs and cloud-native systems from Bitvion Technologies.',
     },
     cta: { label: 'Start a Software Project', path: '/request-proposal?type=software' },
@@ -46,7 +46,7 @@ export const solutionsList = [
     useCases: ['Invoice and document processing', 'Approval workflow automation', 'Data synchronization between systems', 'Scheduled reporting and notifications', 'AI-assisted process routing'],
     techStack: ['Python', 'Node.js', 'REST APIs', 'Webhooks', 'PostgreSQL', 'AWS Lambda', 'Docker'],
     meta: {
-      title: 'Intelligent Automation Solutions | Bitvion Technologies',
+      title: 'Intelligent Automation | Bitvion Technologies',
       description: 'Workflow automation, RPA, AI automation and business process optimization from Bitvion Technologies.',
     },
     cta: { label: 'Discuss Automation', path: '/contact?type=automation' },

@@ -13,6 +13,12 @@ import FounderPreview from '../components/FounderPreview'
 import JobOpenings from '../components/JobOpenings'
 import FinalCTA from '../components/FinalCTA'
 import PageMeta from '../components/seo/PageMeta'
+import StructuredData, {
+  buildWebPageSchema,
+  organizationSchema,
+  personSchema,
+  websiteSchema,
+} from '../components/seo/StructuredData'
 import { HOME_DESCRIPTION, HOME_TITLE } from '../data/entity'
 import styles from '../style'
 
@@ -20,6 +26,18 @@ const Home = () => {
   return (
     <>
       <PageMeta title={HOME_TITLE} description={HOME_DESCRIPTION} path='/' />
+      <StructuredData
+        data={[
+          organizationSchema,
+          personSchema,
+          websiteSchema,
+          buildWebPageSchema({
+            name: HOME_TITLE,
+            description: HOME_DESCRIPTION,
+            path: '/',
+          }),
+        ]}
+      />
       <div className={`bg-primary ${styles.flexStart}`}>
         <div className={`${styles.boxWidth} ${styles.paddingX}`}>
           <Hero />

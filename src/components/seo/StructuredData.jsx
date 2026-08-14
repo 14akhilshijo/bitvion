@@ -15,7 +15,7 @@ export const organizationSchema = {
   image: entity.organization.image,
   email: entity.organization.email,
   description:
-    'Bitvion Technologies is a proprietary enterprise based in Kerala, India, focused on computer programming, consultancy and related activities. The business builds intelligent software, AI solutions, automation systems and digital products, including YatrikERP.',
+    'Bitvion Technologies is a proprietary technology enterprise founded and owned by Akhil Shijo. It builds intelligent software, AI solutions, automation systems and digital products, including YatrikERP.',
   foundingDate: entity.organization.foundingDate,
   founder: { '@id': IDS.person },
   address: entity.organization.locations.map((place) => ({
@@ -27,13 +27,13 @@ export const organizationSchema = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      email: 'info@bitvion.in',
+      email: entity.organization.email,
       contactType: 'customer service',
       url: `${SITE_URL}/contact`,
     },
     {
       '@type': 'ContactPoint',
-      email: 'business@bitvion.in',
+      email: entity.organization.businessEmail,
       contactType: 'sales',
       url: `${SITE_URL}/contact`,
     },
@@ -53,7 +53,7 @@ export const personSchema = {
   name: entity.person.name,
   jobTitle: entity.person.jobTitle,
   description:
-    'Akhil Shijo is the Founder & Proprietor of Bitvion Technologies, a Kerala, India-based technology business focused on software engineering, AI, automation and digital products.',
+    'Akhil Shijo is the Founder & Proprietor of Bitvion Technologies, a proprietary technology enterprise focused on software engineering, AI, intelligent automation and digital products.',
   url: entity.person.url,
   image: entity.person.image,
   worksFor: { '@id': IDS.organization },
@@ -66,6 +66,7 @@ export const personSchema = {
     'Technology Strategy',
     'Product Development',
   ],
+  ...(entity.person.sameAs?.length ? { sameAs: entity.person.sameAs } : {}),
 }
 
 export const websiteSchema = {
@@ -75,6 +76,8 @@ export const websiteSchema = {
   url: entity.organization.url,
   name: entity.organization.name,
   alternateName: entity.organization.alternateName,
+  description:
+    'Official website of Bitvion Technologies — a proprietary technology enterprise founded and owned by Akhil Shijo.',
   inLanguage: 'en',
   publisher: { '@id': IDS.organization },
 }
@@ -93,6 +96,18 @@ export const yatrikSoftwareSchema = {
   provider: { '@id': IDS.organization },
   isPartOf: { '@id': IDS.website },
 }
+
+export const buildWebPageSchema = ({ name, description, path, type = 'WebPage' }) => ({
+  '@context': 'https://schema.org',
+  '@type': type,
+  '@id': `${SITE_URL}${path === '/' ? '/' : path}#webpage`,
+  url: path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`,
+  name,
+  description,
+  isPartOf: { '@id': IDS.website },
+  about: { '@id': IDS.organization },
+  publisher: { '@id': IDS.organization },
+})
 
 export const buildBreadcrumbSchema = (items) => ({
   '@context': 'https://schema.org',
@@ -148,7 +163,7 @@ const StructuredData = ({ data }) => {
     <>
       {json.map((item, i) => (
         <script
-          key={item['@id'] || item['@type'] || i}
+          key={item['@id'] || `${item['@type']}-${i}`}
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
         />

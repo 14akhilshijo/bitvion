@@ -24,7 +24,7 @@ const ProductPreview = () => {
               <span className='text-gradient'>REAL-WORLD OPERATIONS.</span>
             </>
           }
-          subtitle='YatrikERP is a technology product developed by Bitvion Technologies — an AI-powered modular operations platform for transportation businesses.'
+          subtitle='YatrikERP is a technology product developed by Bitvion Technologies — an AI-powered modular operations platform for transportation, hospital and school operations.'
         />
 
         <div className='flex flex-wrap gap-2 mt-6'>

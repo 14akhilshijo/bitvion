@@ -1,7 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PageMeta from '../../components/seo/PageMeta'
-import StructuredData, { buildBreadcrumbSchema, personSchema } from '../../components/seo/StructuredData'
+import StructuredData, {
+  buildBreadcrumbSchema,
+  buildFAQSchema,
+  buildWebPageSchema,
+  personSchema,
+} from '../../components/seo/StructuredData'
 import PageShell from '../../components/layout/PageShell'
 import PageHero from '../../components/layout/PageHero'
 import FounderProfile from '../../components/FounderProfile'
@@ -9,8 +14,10 @@ import JobOpenings from '../../components/JobOpenings'
 import AnimateIn from '../../components/AnimateIn'
 import Breadcrumbs from '../../components/layout/Breadcrumbs'
 import EntityNav from '../../components/seo/EntityNav'
+import FaqSection from '../../components/seo/FaqSection'
 import styles from '../../style'
 import { arrowUp } from '../../assets'
+import { companyFaqs, founderFaqs } from '../../data/entity'
 
 const companyLinks = [
   { title: 'About', path: '/company/about', description: 'Who we are and what we build.' },
@@ -43,34 +50,48 @@ export const CompanyOverview = () => (
 export const AboutPage = () => (
   <PageShell>
     <PageMeta
-      title='About Bitvion Technologies | Software & AI Technology'
-      description='Learn about Bitvion Technologies, a Kerala-based technology business focused on software engineering, artificial intelligence, automation, cloud technology and digital products.'
+      title='About Bitvion Technologies | Founded by Akhil Shijo'
+      description='Bitvion Technologies is a proprietary technology enterprise founded and owned by Akhil Shijo, focused on software engineering, AI, automation, cloud technology and digital products.'
       path='/company/about'
     />
-    <StructuredData data={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'About', path: '/company/about' }])} />
+    <StructuredData
+      data={[
+        buildWebPageSchema({
+          name: 'About Bitvion Technologies',
+          description: 'About Bitvion Technologies, founded and owned by Akhil Shijo.',
+          path: '/company/about',
+          type: 'AboutPage',
+        }),
+        buildBreadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Company', path: '/company' },
+          { name: 'About', path: '/company/about' },
+        ]),
+        buildFAQSchema(companyFaqs),
+      ]}
+    />
     <PageHero
       eyebrow='About'
       title='ABOUT BITVION TECHNOLOGIES'
-      subtitle='A Kerala, India-based technology business focused on software engineering, artificial intelligence, automation, cloud technology and digital products.'
+      subtitle='A proprietary technology enterprise founded and owned by Akhil Shijo.'
       breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'About', path: '/company/about' }]}
     />
     <div className='space-y-8 max-w-[800px]'>
       <p className={styles.paragraph}>
-        Bitvion Technologies is a technology business based in Kerala, India.
-        It is a proprietary enterprise providing services in computer programming,
-        consultancy and related activities. Akhil Shijo is the Founder &amp; Proprietor
-        of Bitvion Technologies.
+        Bitvion Technologies is a proprietary technology enterprise founded and owned by
+        {' '}<Link to='/company/founder' className='text-secondary hover:text-white transition-colors'>Akhil Shijo</Link>.
+        The enterprise provides services in computer programming, consultancy and related
+        activities, and builds intelligent software, AI solutions, automation systems and
+        digital products for organizations in India and international markets.
       </p>
       <p className={styles.paragraph}>
-        Bitvion Technologies builds intelligent software, AI solutions, automation
-        systems and digital products for organizations in India and international markets.
         Capabilities include software engineering, artificial intelligence, machine learning,
         intelligent automation, cloud technology, digital transformation, data and analytics,
-        UI/UX engineering and digital products.
-      </p>
-      <p className={styles.paragraph}>
-        YatrikERP is a technology product developed by Bitvion Technologies for
-        transportation operations.
+        UI/UX engineering and digital products. {' '}
+        <Link to='/products/yatrikerp' className='text-secondary hover:text-white transition-colors'>
+          YatrikERP by Bitvion Technologies
+        </Link>
+        {' '}is the primary digital product for operations platforms.
       </p>
 
       <section>
@@ -79,15 +100,17 @@ export const AboutPage = () => (
           <li className='p-5 rounded-xl bg-black-gradient border border-white/10'>
             <p className='font-poppins text-secondary text-[13px] mb-1'>24 January 2026</p>
             <p className='font-poppins text-dimWhite text-[15px]'>
-              Bitvion Technologies commenced as a proprietary enterprise in Kerala, India,
-              with a primary activity of computer programming, consultancy and related services.
+              Bitvion Technologies was incorporated and commenced business as a proprietary
+              enterprise in Kerala, India, with a primary activity of computer programming,
+              consultancy and related services.
             </p>
           </li>
           <li className='p-5 rounded-xl bg-black-gradient border border-white/10'>
             <p className='font-poppins text-secondary text-[13px] mb-1'>Ongoing</p>
             <p className='font-poppins text-dimWhite text-[15px]'>
               Engineering software, AI, automation and digital products, including YatrikERP,
-              and building technology capabilities for organizations in India and international markets.
+              and serving businesses while exploring opportunities across India and
+              international markets.
             </p>
           </li>
         </ol>
@@ -98,10 +121,13 @@ export const AboutPage = () => (
         <dl className='grid grid-cols-1 sm:grid-cols-2 gap-4 font-poppins text-[15px]'>
           {[
             ['Name', 'Bitvion Technologies'],
-            ['Organisation type', 'Proprietary enterprise'],
+            ['Organisation type', 'Proprietary'],
+            ['Enterprise classification', 'Micro'],
             ['Major activity', 'Services'],
             ['Primary activity', 'Computer programming, consultancy and related activities'],
-            ['Commencement', '24 January 2026'],
+            ['Udyam Registration', 'UDYAM-KL-03-0036543'],
+            ['Date of incorporation', '24 January 2026'],
+            ['Date of commencement', '24 January 2026'],
             ['Locations', 'Kerala, India · Bangalore, India'],
             ['Founder & Proprietor', 'Akhil Shijo'],
             ['Official product', 'YatrikERP'],
@@ -117,12 +143,14 @@ export const AboutPage = () => (
       <EntityNav
         label='Related to Bitvion Technologies'
         links={[
-          { name: 'Akhil Shijo, Founder', path: '/company/founder' },
+          { name: 'Akhil Shijo, Founder & Proprietor of Bitvion Technologies', path: '/company/founder' },
           { name: 'YatrikERP', path: '/products/yatrikerp' },
           { name: 'Solutions', path: '/solutions' },
-          { name: 'Technology', path: '/company/technology' },
+          { name: 'Contact', path: '/contact' },
         ]}
       />
+
+      <FaqSection faqs={companyFaqs} />
     </div>
   </PageShell>
 )
@@ -131,22 +159,40 @@ export const FounderPage = () => (
   <PageShell>
     <PageMeta
       title='Akhil Shijo | Founder & Proprietor of Bitvion Technologies'
-      description='Akhil Shijo is the Founder and Proprietor of Bitvion Technologies, a technology business focused on software engineering, AI, automation and digital products.'
+      description='Akhil Shijo is the Founder & Proprietor of Bitvion Technologies, a technology enterprise focused on software engineering, AI, intelligent automation and digital products.'
       path='/company/founder'
+      type='profile'
       image='https://bitvion.in/founder.jpeg'
+      imageAlt='Akhil Shijo, Founder and Proprietor of Bitvion Technologies'
     />
     <StructuredData
       data={[
         personSchema,
+        buildWebPageSchema({
+          name: 'Akhil Shijo | Founder & Proprietor of Bitvion Technologies',
+          description:
+            'Professional profile of Akhil Shijo, Founder & Proprietor of Bitvion Technologies.',
+          path: '/company/founder',
+          type: 'ProfilePage',
+        }),
         buildBreadcrumbSchema([
           { name: 'Home', path: '/' },
           { name: 'Company', path: '/company' },
           { name: 'Founder', path: '/company/founder' },
+          { name: 'Akhil Shijo', path: '/company/founder' },
         ]),
+        buildFAQSchema(founderFaqs),
       ]}
     />
     <div className='pt-28 sm:pt-32'>
-      <Breadcrumbs items={[{ name: 'Home', path: '/' }, { name: 'Company', path: '/company' }, { name: 'Founder', path: '/company/founder' }]} />
+      <Breadcrumbs
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Company', path: '/company' },
+          { name: 'Founder', path: '/company/founder' },
+          { name: 'Akhil Shijo', path: '/company/founder' },
+        ]}
+      />
     </div>
     <FounderProfile variant='page' />
   </PageShell>
