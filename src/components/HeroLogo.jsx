@@ -1,68 +1,66 @@
 import React from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { bitvion3d } from '../assets'
-
-const BRAND_CYAN = '#5CE1E6'
+import { bitvionMark } from '../assets'
 
 const HeroLogo = () => {
   const reduceMotion = useReducedMotion()
 
   return (
     <div
-      className='relative w-full max-w-[250px] xs:max-w-[330px] sm:max-w-[430px] md:max-w-[470px] flex items-center justify-center py-2 md:py-4'
+      className='relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[360px] md:max-w-[400px] flex flex-col items-center justify-center py-4 md:py-6'
       role='img'
       aria-label='Bitvion Technologies logo'
     >
-      {/* Soft ambient bloom — diffused brand cyan, no sharp hotspots */}
       <div
-        className='absolute inset-[-12%] pointer-events-none'
+        className='absolute inset-[-10%] pointer-events-none'
         aria-hidden='true'
         style={{
-          background: `radial-gradient(ellipse 72% 68% at 50% 50%, rgba(92, 225, 230, 0.11) 0%, rgba(92, 225, 230, 0.04) 42%, transparent 70%)`,
-        }}
-      />
-      <div
-        className='absolute inset-[8%] pointer-events-none blur-[72px] opacity-70'
-        aria-hidden='true'
-        style={{
-          background: `radial-gradient(circle at 50% 55%, rgba(92, 225, 230, 0.09) 0%, transparent 62%)`,
+          background:
+            'radial-gradient(ellipse 70% 60% at 50% 42%, rgba(92, 225, 230, 0.14) 0%, rgba(92, 225, 230, 0.04) 45%, transparent 72%)',
         }}
       />
 
       <motion.div
-        className='relative z-[2] w-[78%] opacity-[0.84]'
-        animate={reduceMotion ? undefined : { y: [0, -4, 0] }}
+        className='relative z-[2] flex flex-col items-center w-full'
+        animate={reduceMotion ? undefined : { y: [0, -5, 0] }}
         transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <img
-          src={bitvion3d}
-          alt='Bitvion Technologies'
-          width={1316}
-          height={1108}
-          draggable={false}
-          decoding='async'
-          className='relative w-full h-auto object-contain select-none'
-          style={{
-            imageRendering: 'auto',
-            filter:
-              'brightness(0.86) contrast(0.90) saturate(0.82) drop-shadow(0 10px 24px rgba(92, 225, 230, 0.10))',
-          }}
-        />
-        {/* Tame baked-in specular highlights */}
-        <div
-          className='absolute inset-0 pointer-events-none'
-          aria-hidden='true'
-          style={{
-            background:
-              'linear-gradient(165deg, rgba(0, 4, 15, 0.06) 0%, rgba(0, 4, 15, 0.14) 55%, rgba(0, 4, 15, 0.22) 100%)',
-          }}
-        />
-        {/* Subtle cyan harmonization toward brand accent */}
-        <div
-          className='absolute inset-0 pointer-events-none mix-blend-mode-soft-light opacity-40'
-          aria-hidden='true'
-          style={{ backgroundColor: BRAND_CYAN }}
-        />
+        <div className='relative mb-6 sm:mb-8'>
+          <div
+            className='absolute inset-[-20%] blur-[48px] opacity-60 pointer-events-none'
+            aria-hidden='true'
+            style={{
+              background:
+                'radial-gradient(circle at 50% 50%, rgba(92, 225, 230, 0.22) 0%, transparent 68%)',
+            }}
+          />
+          <img
+            src={bitvionMark}
+            alt=''
+            width={568}
+            height={458}
+            draggable={false}
+            decoding='async'
+            className='relative w-[148px] xs:w-[168px] sm:w-[188px] md:w-[208px] h-auto object-contain select-none mx-auto'
+            style={{
+              filter:
+                'drop-shadow(0 8px 28px rgba(92, 225, 230, 0.18)) saturate(0.95) brightness(0.96)',
+            }}
+          />
+        </div>
+
+        <div className='text-center w-full'>
+          <p className='font-poppins font-semibold text-white text-[34px] xs:text-[40px] sm:text-[46px] md:text-[50px] leading-none tracking-[0.12em] sm:tracking-[0.14em]'>
+            BIT<span className='text-gradient'>V</span>ION
+          </p>
+          <div className='flex items-center justify-center gap-3 mt-4 sm:mt-5'>
+            <span className='h-px w-8 sm:w-10 bg-gradient-to-r from-transparent to-secondary/50' aria-hidden='true' />
+            <p className='font-poppins font-medium text-dimWhite uppercase text-[10px] xs:text-[11px] sm:text-[12px] tracking-[0.28em] sm:tracking-[0.32em]'>
+              Technologies
+            </p>
+            <span className='h-px w-8 sm:w-10 bg-gradient-to-l from-transparent to-secondary/50' aria-hidden='true' />
+          </div>
+        </div>
       </motion.div>
     </div>
   )
