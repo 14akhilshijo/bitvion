@@ -154,6 +154,42 @@ video {
   filter: blur(300px);
 }
 
+@keyframes heroLogoAnimate {
+  0% {
+    transform: translateY(0px) scale(0.98);
+    filter: drop-shadow(0 0 15px rgba(0, 180, 216, 0.2));
+  }
+  50% {
+    transform: translateY(-10px) scale(1);
+    filter: drop-shadow(0 0 30px rgba(0, 180, 216, 0.45));
+  }
+  100% {
+    transform: translateY(0px) scale(0.98);
+    filter: drop-shadow(0 0 15px rgba(0, 180, 216, 0.2));
+  }
+}
+
+.hero-logo-animated {
+  animation: heroLogoAnimate 6s ease-in-out infinite;
+}
+
+.hero-logo-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 180, 216, 0.22) 0%,
+    rgba(0, 180, 216, 0.08) 38%,
+    transparent 72%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo-animated {
+    animation: none !important;
+    transform: none !important;
+    filter: drop-shadow(0 0 15px rgba(0, 180, 216, 0.2)) !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
