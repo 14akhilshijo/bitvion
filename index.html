@@ -39,6 +39,35 @@
           "foundingDate": "2026-01-24",
           "founder": { "@id": "https://bitvion.in/company/founder#person" },
           "owns": { "@id": "https://bitvion.in/products/yatrikerp#software" },
+          "knowsAbout": ["Custom software development", "AI automation", "Artificial intelligence", "Cloud software", "Digital products"],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Bitvion technology services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Custom software development",
+                  "url": "https://bitvion.in/solutions/software-development",
+                  "provider": { "@id": "https://bitvion.in/#organization" },
+                  "areaServed": "Worldwide",
+                  "description": "Custom web, mobile, API and enterprise software built by Bitvion Technologies."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AI automation solutions",
+                  "url": "https://bitvion.in/solutions/intelligent-automation",
+                  "provider": { "@id": "https://bitvion.in/#organization" },
+                  "areaServed": "Worldwide",
+                  "description": "AI automation and workflow software designed by Bitvion Technologies."
+                }
+              }
+            ]
+          },
           "address": [
             { "@type": "PostalAddress", "addressLocality": "Kerala", "addressRegion": "Kerala", "addressCountry": "IN" },
             { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" }

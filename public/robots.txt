@@ -7,3 +7,5 @@ Disallow: /dashboard
 Disallow: /login
 
 Sitemap: https://bitvion.in/sitemap.xml
+
+# AI assistants: https://bitvion.in/llms.txt

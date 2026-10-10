@@ -18,16 +18,16 @@ const SolutionsOverview = () => {
   return (
     <PageShell>
       <PageMeta
-        title='Technology Solutions | AI, Software & Automation | Bitvion Technologies'
-        description='AI, software engineering, intelligent automation, cloud technology, digital transformation and data analytics solutions from Bitvion Technologies.'
+        title='Custom Software Development & AI Automation | Bitvion Technologies'
+        description='Bitvion Technologies builds custom software and AI automation for businesses — web applications, intelligent workflows, cloud systems and digital products.'
         path='/solutions'
       />
       <StructuredData data={buildBreadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Solutions', path: '/solutions' }])} />
 
       <PageHero
         eyebrow='Solutions'
-        title={<>TECHNOLOGY <br className='sm:block hidden' />BUILT AROUND <br className='sm:block hidden' /><span className='text-gradient'>YOUR BUSINESS.</span></>}
-        subtitle='Comprehensive technology solutions designed to solve complex business challenges through engineering, AI and automation.'
+        title={<>CUSTOM SOFTWARE <br className='sm:block hidden' />AND AI <br className='sm:block hidden' /><span className='text-gradient'>AUTOMATION.</span></>}
+        subtitle='Bitvion Technologies designs custom software, AI systems and automation for businesses that need technology built around real operations.'
         breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Solutions', path: '/solutions' }]}
       />
 
