@@ -10,6 +10,7 @@ import CareersForm from '../components/forms/CareersForm'
 import JobOpenings from '../components/JobOpenings'
 import AnimateIn from '../components/AnimateIn'
 import styles from '../style'
+import { entity } from '../data/entity'
 
 const ContactPage = () => (
   <PageShell>
@@ -32,6 +33,18 @@ const ContactPage = () => (
             <li><a href='mailto:info@bitvion.in' className='hover:text-secondary transition-colors'>info@bitvion.in</a> — General</li>
             <li><a href='mailto:business@bitvion.in' className='hover:text-secondary transition-colors'>business@bitvion.in</a> — Business</li>
           </ul>
+        </div>
+        <div className='p-6 rounded-xl bg-black-gradient border border-white/10'>
+          <h2 className='font-poppins font-semibold text-white text-[18px] mb-4'>WhatsApp</h2>
+          <a
+            href={entity.organization.whatsappUrl}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='inline-flex items-center justify-center min-h-[48px] px-5 rounded-[11px] font-poppins font-medium text-[15px] text-primary hero-cta-primary'
+          >
+            Message {entity.organization.phoneDisplay}
+          </a>
+          <p className='font-poppins text-dimWhite text-[14px] mt-3'>Chat directly with Bitvion Technologies.</p>
         </div>
         <div className='p-6 rounded-xl bg-black-gradient border border-white/10'>
           <h2 className='font-poppins font-semibold text-white text-[18px] mb-3'>Locations</h2>

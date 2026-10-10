@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from '../style'
 import BrandLogo from './BrandLogo'
+import { entity } from '../data/entity'
 
 const footerSections = [
   {
@@ -103,6 +104,10 @@ const Footer = () => {
           <a href='https://bitvion.in/' className='hover:text-secondary transition-colors'>bitvion.in</a>
           {' · '}
           <a href='mailto:info@bitvion.in' className='hover:text-secondary transition-colors'>info@bitvion.in</a>
+          {' · '}
+          <a href={entity.organization.whatsappUrl} className='hover:text-secondary transition-colors' target='_blank' rel='noopener noreferrer'>
+            WhatsApp {entity.organization.phoneDisplay}
+          </a>
         </p>
       </div>
 

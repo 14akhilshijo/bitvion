@@ -28,8 +28,9 @@ export const organizationSchema = {
     {
       '@type': 'ContactPoint',
       email: entity.organization.email,
+      telephone: `+91${entity.organization.phone}`,
       contactType: 'customer service',
-      url: `${SITE_URL}/contact`,
+      url: entity.organization.whatsappUrl,
     },
     {
       '@type': 'ContactPoint',
