@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useState } from 'react'
-import bitvionAi from '../assets/bitvion-ai.jpg'
+import bitvionChild from '../assets/bitvion-child-tight.jpg'
 import { entity } from '../data/entity'
 
 const chatUrl = (text) =>
@@ -46,7 +46,30 @@ const replyFor = (question) => {
   return 'I can help with software, AI, YatrikERP, and careers. For anything more specific, I’ll send your question straight to the Bitvion team on WhatsApp.'
 }
 
-const faceClass = 'object-cover object-[76%_16%]'
+const prompts = [
+  {
+    label: 'Hi! Welcome to Bitvion!',
+    mark: '👋',
+    reply: 'Hi! Welcome to Bitvion. Ask me about software, AI, YatrikERP, or careers. If you want to talk it through, we continue on WhatsApp.',
+  },
+  {
+    label: 'Why did you come here?',
+    mark: '?',
+    reply: 'Tell me what brought you here. A project, YatrikERP, a job, or something else?',
+  },
+  {
+    label: 'Looking for something specific?',
+    mark: '⌕',
+    reply: 'I can help you find custom software, AI automation, YatrikERP, or open roles. What are you looking for?',
+  },
+  {
+    label: 'Need any help?',
+    mark: '💡',
+    reply: 'Yes. Type your question and I’ll answer. When you want the team, I’ll send it straight to WhatsApp.',
+  },
+]
+
+const faceClass = 'object-cover object-[50%_18%]'
 
 const WhatsAppButton = () => {
   const titleId = useId()
@@ -55,16 +78,9 @@ const WhatsAppButton = () => {
   const [thread, setThread] = useState([
     {
       from: 'agent',
-      text: 'Hello, I’m here. Ask me about software, AI, YatrikERP, or careers, and I’ll answer. If you want to talk it through, we continue on WhatsApp.',
+      text: 'Hi! Welcome to Bitvion. Ask me anything, and we can continue on WhatsApp.',
     },
   ])
-
-  useEffect(() => {
-    const seen = sessionStorage.getItem('bitvion-support-seen')
-    if (seen) return undefined
-    const timer = window.setTimeout(() => setOpen(true), 1200)
-    return () => window.clearTimeout(timer)
-  }, [])
 
   useEffect(() => {
     if (!open) return undefined
@@ -88,6 +104,15 @@ const WhatsAppButton = () => {
     setQuestion('')
   }
 
+  const choose = (prompt) => {
+    setOpen(true)
+    setThread((current) => {
+      const last = current[current.length - 1]
+      if (last?.text === prompt.reply) return current
+      return [...current, { from: 'agent', text: prompt.reply }]
+    })
+  }
+
   const latestVisitor = [...thread].reverse().find((item) => item.from === 'visitor')
   const handoff = latestVisitor
     ? `Hello Bitvion. ${latestVisitor.text}`
@@ -103,7 +128,7 @@ const WhatsAppButton = () => {
         >
           <header className='flex items-center gap-3 px-4 py-3 border-b border-white/10 bg-[radial-gradient(ellipse_at_left,rgba(92,225,230,0.16),transparent_60%)]'>
             <span className='relative shrink-0'>
-              <img src={bitvionAi} alt='' className={`h-11 w-11 rounded-full border border-cyan-400/30 ${faceClass}`} />
+              <img src={bitvionChild} alt='' className={`h-11 w-11 rounded-full border border-cyan-400/30 ${faceClass}`} />
               <span className='absolute bottom-0 right-0 w-3 h-3 rounded-full bg-secondary border-2 border-[#030912]' aria-hidden='true' />
             </span>
             <div className='min-w-0 flex-1'>
@@ -168,32 +193,48 @@ const WhatsAppButton = () => {
         </section>
       )}
 
-      <button
-        type='button'
-        onClick={() => setOpen((value) => !value)}
-        className='relative inline-flex flex-col items-end bg-transparent border-0 p-0 focus-visible:ring-2 focus-visible:ring-secondary rounded-2xl'
-        aria-expanded={open}
-        aria-label={open ? 'Hide Bitvion AI' : 'Ask Bitvion AI'}
-      >
-        {!open && (
-          <span className='mb-1 px-3.5 py-2 rounded-2xl rounded-br-md border border-cyan-400/35 bg-[#030912]/95 font-poppins text-[14px] text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)]'>
-            Hi, I’m here
-          </span>
-        )}
-        {open ? (
-          <img src={bitvionAi} alt='' className={`h-14 w-14 rounded-full border border-cyan-400/40 ${faceClass}`} />
-        ) : (
-          <span className='support-person relative block'>
-            <span className='support-floor pointer-events-none absolute bottom-2 left-1/2 h-4 w-3/4 -translate-x-1/2 rounded-full bg-secondary/60 blur-md' aria-hidden='true' />
+      {!open && (
+        <div className='flex items-end gap-2 sm:gap-3'>
+          <div className='mb-6 flex max-w-[168px] flex-col items-end gap-2 sm:mb-10 sm:max-w-[220px]'>
+            {prompts.map((prompt, index) => (
+              <button
+                key={prompt.label}
+                type='button'
+                onClick={() => choose(prompt)}
+                className='support-bubble font-poppins text-left text-[12px] leading-snug text-white sm:text-[13px]'
+                style={{ animationDelay: `${index * 0.35}s` }}
+              >
+                <span className='mr-1.5 text-secondary' aria-hidden='true'>{prompt.mark}</span>
+                {prompt.label}
+              </button>
+            ))}
+          </div>
+          <button
+            type='button'
+            onClick={() => setOpen(true)}
+            className='support-person relative border-0 bg-transparent p-0 focus-visible:ring-2 focus-visible:ring-secondary'
+            aria-label='Ask Bitvion AI'
+          >
+            <span className='support-floor pointer-events-none absolute bottom-1 left-1/2 h-4 w-2/3 -translate-x-1/2 rounded-full bg-secondary/70 blur-md' aria-hidden='true' />
             <img
-              src={bitvionAi}
+              src={bitvionChild}
               alt=''
-              className='support-agent relative h-[200px] w-[120px] sm:h-[390px] sm:w-[230px]'
+              className='support-child relative h-[220px] w-[132px] sm:h-[360px] sm:w-[210px]'
             />
-            <span className='absolute bottom-8 right-2 h-3.5 w-3.5 rounded-full border-2 border-[#030912] bg-secondary' aria-hidden='true' />
-          </span>
-        )}
-      </button>
+          </button>
+        </div>
+      )}
+
+      {open && (
+        <button
+          type='button'
+          onClick={() => setOpen(false)}
+          className='border-0 bg-transparent p-0 focus-visible:ring-2 focus-visible:ring-secondary'
+          aria-label='Hide Bitvion AI'
+        >
+          <img src={bitvionChild} alt='' className={`h-14 w-14 rounded-full border border-cyan-400/40 ${faceClass}`} />
+        </button>
+      )}
     </div>
   )
 }
